@@ -89,25 +89,31 @@ function inspect(root) {
       }
 
       const exactKey = rule.fingerprint;
-      if (exactGlobal.has(exactKey)) {
+      const exactPrevious = exactGlobal.get(exactKey);
+      if (exactPrevious && exactPrevious.groupPath !== group.path) {
         exactDuplicates.push({
           scope: '跨规则组',
           group: group.label,
-          first: exactGlobal.get(exactKey),
+          first: exactPrevious.path,
           duplicate: rule.path
         });
-      } else exactGlobal.set(exactKey, rule.path);
+      } else if (!exactPrevious) {
+        exactGlobal.set(exactKey, { path: rule.path, groupPath: group.path });
+      }
 
       const selectorKey = rule.selectorSignature;
       if (selectorKey !== '{}') {
-        if (selectorGlobal.has(selectorKey)) {
+        const selectorPrevious = selectorGlobal.get(selectorKey);
+        if (selectorPrevious && selectorPrevious.groupPath !== group.path) {
           selectorDuplicates.push({
             scope: '跨规则组',
             group: group.label,
-            first: selectorGlobal.get(selectorKey),
+            first: selectorPrevious.path,
             candidate: rule.path
           });
-        } else selectorGlobal.set(selectorKey, rule.path);
+        } else if (!selectorPrevious) {
+          selectorGlobal.set(selectorKey, { path: rule.path, groupPath: group.path });
+        }
       }
     }
   }
