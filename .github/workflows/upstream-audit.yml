@@ -22,19 +22,30 @@ jobs:
         with:
           node-version: 22
       - name: Fetch upstream subscription
-        run: curl -fL --retry 3 --retry-delay 2 'https://gkd-subscription-667.pages.dev/gkd.json5' -o upstream.json5
+        run: curl -fL --retry 3 --retry-delay 2 'https://gkd-subscription-667.pages.dev/gkd.json5' -o /tmp/upstream-candidate.json5
       - name: Install JSON5 parser
         run: npm install --no-save json5
       - name: Validate and audit
+        id: audit
+        continue-on-error: true
         run: |
-          node audit/audit.mjs
-          git diff --check
-      - name: Commit upstream changes and report
+          node audit/audit.mjs /tmp/upstream-candidate.json5
+          git diff --check -- audit/REPORT.md
+      - name: Commit validated upstream and report
+        if: always()
         run: |
-          if ! git diff --quiet -- upstream.json5 audit/REPORT.md; then
+          git add audit/REPORT.md
+          if [[ "${{ steps.audit.outcome }}" == "success" ]]; then
+            git add upstream.json5
+          fi
+          if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add upstream.json5 audit/REPORT.md
             git commit -m 'chore: daily upstream snapshot and audit report'
             git push
           fi
+      - name: Fail workflow when validation is blocked
+        if: steps.audit.outcome == 'failure'
+        run: |
+          echo 'Audit validation failed. The previous upstream snapshot was preserved; inspect audit/REPORT.md.'
+          exit 1
