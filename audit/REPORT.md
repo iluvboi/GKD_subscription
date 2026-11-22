@@ -1,270 +1,118 @@
 # GKD 规则审计报告
 
-## 基本信息
+- 检查时间：2026-11-22 18:15 UTC
+- 上游订阅：ID 667 / v641
+- 清理版订阅：ID 667 / v640
+- 上游文件 Git Blob SHA：a5768fffa081fbd70e6c34e363239d4e215bd02b
+- 清理版文件 Git Blob SHA：22da2de5dc03f0ef455a962ce60c7792e90a0fec
+- 处理结果：上游镜像已是最新已发布版本 v641；本轮没有新的已发布订阅可同步。
+- 安全策略：未覆盖 gkd.json5，未删除、合并或改写任何规则。
 
-- 上游订阅 ID：667
-- 上游版本：641
-- 清理版订阅 ID：667
-- 清理版版本：640
-- 比较结果：清理版与上游存在差异
+## 上游版本与项目状态
 
-## 结构统计
+- GitHub 最新 Release：v641，发布于 2026-11-21 23:30:22 UTC。
+- dist/gkd.version.json5：{id:667,version:641}，最后修改于 2026-11-21 23:30:07 UTC。
+- GitHub main 相对 v641 标签领先 4 个提交；最新提交为 9e1e64771734083eb5a21626f7b8dbe130a5defa，时间为 2026-11-22 12:51:56 UTC。
+- v641 之后的 main 源码变更尚未形成 v642 发布版本。本轮只使用已发布订阅产物，不把未发布源码直接拼入订阅。
+- 仓库最近一次 GitHub Actions 运行 44988831045 于 2026-11-22 05:18:40 UTC 成功完成，下载、JSON5 安装、校验审计和提交步骤均为绿色。
 
-| 指标 | 上游 | 清理版 |
+## JSON5 与订阅校验
+
+| 检查项 | 上游 | 清理版 |
 |---|---:|---:|
+| JSON5 解析 | 通过 | 通过 |
+| 订阅 ID | 667 | 667 |
+| 版本 | 641 | 640 |
+| 应用数 | 1009 | 1008 |
 | 规则组 | 2503 | 2501 |
 | 规则总数 | 3965 | 3962 |
-| 完全重复规则候选 | 22 | 22 |
-| 选择器条件签名相同候选 | 156 | 156 |
 
-## 清理版与上游差异
+上游比清理版新 1 个版本。upstream.json5 已包含 v641；gkd.json5 仍保留 v640 基线，符合不自动覆盖清理版的约定。
 
-- 上游有、清理版缺失的规则组：21
-- 清理版额外规则组：19
-- 清理版缺失的上游规则：30
-- 清理版额外规则：29
+## 规则组与规则级差异
 
-- 缺失规则组：$.apps[994].groups[1]
-- 缺失规则组：$.apps[1001].groups[5]
-- 缺失规则组：$.apps[1002].groups[1]
-- 缺失规则组：$.apps[1002].groups[2]
-- 缺失规则组：$.apps[1002].groups[3]
-- 缺失规则组：$.apps[1002].groups[4]
-- 缺失规则组：$.apps[1004].groups[1]
-- 缺失规则组：$.apps[1004].groups[2]
-- 缺失规则组：$.apps[1004].groups[3]
-- 缺失规则组：$.apps[1004].groups[4]
-- 缺失规则组：$.apps[1004].groups[5]
-- 缺失规则组：$.apps[1004].groups[6]
-- 缺失规则组：$.apps[1004].groups[7]
-- 缺失规则组：$.apps[1004].groups[8]
-- 缺失规则组：$.apps[1004].groups[9]
-- 缺失规则组：$.apps[1004].groups[10]
-- 缺失规则组：$.apps[1004].groups[11]
-- 缺失规则组：$.apps[1004].groups[12]
-- 缺失规则组：$.apps[1004].groups[13]
-- 缺失规则组：$.apps[1004].groups[14]
-- 缺失规则组：$.apps[1008].groups[0]
-- 额外规则组：$.apps[998].groups[1]
-- 额外规则组：$.apps[1000].groups[2]
-- 额外规则组：$.apps[1000].groups[3]
-- 额外规则组：$.apps[1000].groups[4]
-- 额外规则组：$.apps[1000].groups[5]
-- 额外规则组：$.apps[1003].groups[1]
-- 额外规则组：$.apps[1003].groups[2]
-- 额外规则组：$.apps[1003].groups[3]
-- 额外规则组：$.apps[1003].groups[4]
-- 额外规则组：$.apps[1003].groups[5]
-- 额外规则组：$.apps[1003].groups[6]
-- 额外规则组：$.apps[1003].groups[7]
-- 额外规则组：$.apps[1003].groups[8]
-- 额外规则组：$.apps[1003].groups[9]
-- 额外规则组：$.apps[1003].groups[10]
-- 额外规则组：$.apps[1003].groups[11]
-- 额外规则组：$.apps[1003].groups[12]
-- 额外规则组：$.apps[1003].groups[13]
-- 额外规则组：$.apps[1003].groups[14]
-- 缺失规则：$.apps[310].groups[14].rules[0]（功能类-自动[展开更多]评论|21||）
-- 缺失规则：$.apps[451].groups[2].rules[0]（全屏广告|3||）
-- 缺失规则：$.apps[451].groups[2].rules[1]（全屏广告|3||）
-- 缺失规则：$.apps[451].groups[2].rules[2]（全屏广告|3||）
-- 缺失规则：$.apps[998].groups[0].rules[0]（功能类-自动关闭温度过低提示|1||）
-- 缺失规则：$.apps[999].groups[0].rules[0]（功能类-免流提示|1||）
-- 缺失规则：$.apps[999].groups[1].rules[0]（局部广告-天气详情页面|2||）
-- 缺失规则：$.apps[1000].groups[0].rules[0]（权限提示-通知权限|1||）
-- 缺失规则：$.apps[1000].groups[1].rules[0]（全屏广告-热门应用推荐|2||）
-- 缺失规则：$.apps[1000].groups[1].rules[1]（全屏广告-热门应用推荐|2||）
-- 缺失规则：$.apps[1001].groups[0].rules[0]（开屏广告|0||）
-- 缺失规则：$.apps[1001].groups[0].rules[1]（开屏广告|0||）
-- 缺失规则：$.apps[1001].groups[1].rules[0]（评价提示|1||）
-- 缺失规则：$.apps[1001].groups[2].rules[0]（更新提示|2||）
-- 缺失规则：$.apps[1001].groups[3].rules[0]（功能类-[询问是否保存编辑]弹窗点击[离开]|3||）
-- 缺失规则：$.apps[1001].groups[4].rules[0]（全屏广告|4||）
-- 缺失规则：$.apps[1002].groups[0].rules[0]（全屏广告-弹窗广告|1||）
-- 缺失规则：$.apps[1002].groups[0].rules[1]（全屏广告-弹窗广告|1||）
-- 缺失规则：$.apps[1002].groups[0].rules[2]（全屏广告-弹窗广告|1||）
-- 缺失规则：$.apps[1002].groups[0].rules[3]（全屏广告-弹窗广告|1||）
-- 缺失规则：$.apps[1003].groups[0].rules[0]（局部广告-首页-WiFi列表广告|1||）
-- 缺失规则：$.apps[1003].groups[0].rules[1]（局部广告-首页-WiFi列表广告|1||）
-- 缺失规则：$.apps[1004].groups[0].rules[0]（分段广告-主页信息流广告|1||）
-- 缺失规则：$.apps[1004].groups[0].rules[1]（分段广告-主页信息流广告|1||）
-- 缺失规则：$.apps[1004].groups[0].rules[2]（分段广告-主页信息流广告|1||）
-- 缺失规则：$.apps[1004].groups[0].rules[3]（分段广告-主页信息流广告|1||）
-- 缺失规则：$.apps[1004].groups[0].rules[4]（分段广告-主页信息流广告|1||）
-- 缺失规则：$.apps[1006].groups[0].rules[0]（功能类-自动允许打开外部App|1||）
-- 缺失规则：$.apps[1007].groups[0].rules[0]（全屏广告-弹窗广告|1||）
-- 缺失规则：$.apps[1007].groups[0].rules[1]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[310].groups[14].rules[0]（功能类-自动[展开更多]评论|21||）
-- 额外规则：$.apps[451].groups[2].rules[0]（全屏广告-红包弹窗|3||）
-- 额外规则：$.apps[451].groups[2].rules[1]（全屏广告-红包弹窗|3||）
-- 额外规则：$.apps[998].groups[0].rules[0]（功能类-免流提示|1||）
-- 额外规则：$.apps[999].groups[0].rules[0]（权限提示-通知权限|1||）
-- 额外规则：$.apps[999].groups[1].rules[0]（全屏广告-热门应用推荐|2||）
-- 额外规则：$.apps[999].groups[1].rules[1]（全屏广告-热门应用推荐|2||）
-- 额外规则：$.apps[1000].groups[0].rules[0]（开屏广告|0||）
-- 额外规则：$.apps[1000].groups[0].rules[1]（开屏广告|0||）
-- 额外规则：$.apps[1000].groups[1].rules[0]（评价提示|1||）
-- 额外规则：$.apps[1001].groups[0].rules[0]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1001].groups[0].rules[1]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1001].groups[0].rules[2]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1001].groups[0].rules[3]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1001].groups[1].rules[0]（全屏广告-连接WiFi后弹出的广告|2||）
-- 额外规则：$.apps[1001].groups[2].rules[0]（功能类-加速成功后自动点击返回|3||）
-- 额外规则：$.apps[1001].groups[3].rules[0]（局部广告-连接WiFi界面右侧悬浮广告|4||）
-- 额外规则：$.apps[1001].groups[4].rules[0]（局部广告-[我的]界面广告卡片|5||）
-- 额外规则：$.apps[1002].groups[0].rules[0]（局部广告-首页-WiFi列表广告|1||）
-- 额外规则：$.apps[1002].groups[0].rules[1]（局部广告-首页-WiFi列表广告|1||）
-- 额外规则：$.apps[1003].groups[0].rules[0]（分段广告-主页信息流广告|1||）
-- 额外规则：$.apps[1003].groups[0].rules[1]（分段广告-主页信息流广告|1||）
-- 额外规则：$.apps[1003].groups[0].rules[2]（分段广告-主页信息流广告|1||）
-- 额外规则：$.apps[1003].groups[0].rules[3]（分段广告-主页信息流广告|1||）
-- 额外规则：$.apps[1003].groups[0].rules[4]（分段广告-主页信息流广告|1||）
-- 额外规则：$.apps[1004].groups[0].rules[0]（功能类-自动允许打开外部App|1||）
-- 额外规则：$.apps[1006].groups[0].rules[0]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1006].groups[0].rules[1]（全屏广告-弹窗广告|1||）
-- 额外规则：$.apps[1007].groups[0].rules[0]（通知提示-公告弹窗|1||）
+本轮使用应用包名 + group.key 作为规则组稳定身份；没有 key 时才退回应用包名 + group.name。数组索引仅用于定位，不作为身份。
 
-## 完全重复规则候选
+旧版审计报告按数组路径直接匹配规则组。上游新增应用后，后续 apps 数组索引整体偏移，导致旧报告中大量“缺失/额外规则组”是假阳性。旧报告中的 21 个缺失组、19 个额外组及相应规则差异不应作为真实删改结论。本报告已按稳定身份重新核对。
 
-完全重复仅表示规则对象序列化后相同；跨规则组仍可能因应用、组配置或执行上下文不同而具有不同作用。
+- 上游新增、清理版尚无的规则组：2
+- 清理版额外规则组：0
+- 已匹配规则组的元数据变化：1
+- 存在规则内容变化的已匹配规则组：2
+- 无法安全配对的规则组：0
 
-- [跨规则组] 其他-⚠️请移步软件包安装程序|0||：$.apps[45].groups[0].rules[0] ↔ $.apps[59].groups[0].rules[0]
-- [跨规则组] 其他-⚠️请移步软件包安装程序|0||：$.apps[45].groups[0].rules[0] ↔ $.apps[60].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[81].groups[0].rules[1] ↔ $.apps[82].groups[0].rules[1]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[23].rules[0] ↔ $.apps[223].groups[24].rules[0]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[23].rules[1] ↔ $.apps[223].groups[24].rules[1]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[23].rules[2] ↔ $.apps[223].groups[24].rules[2]
-- [跨规则组] 功能类-📋病例视频自动x1.5倍速(⚠️四选一)|11||：$.apps[278].groups[9].rules[0] ↔ $.apps[278].groups[10].rules[0]
-- [跨规则组] 功能类-📋病例视频自动x2.0倍速(⚠️四选一)|12||：$.apps[278].groups[9].rules[0] ↔ $.apps[278].groups[11].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[389].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[605].groups[0].rules[0]
-- [跨规则组] 功能类-自动允许白描共享整个屏幕|2||：$.apps[732].groups[0].rules[1] ↔ $.apps[732].groups[1].rules[1]
-- [跨规则组] 功能类-自动允许白描共享整个屏幕|2||：$.apps[732].groups[0].rules[2] ↔ $.apps[732].groups[1].rules[2]
-- [跨规则组] 功能类-自动允许QQ音乐共享整个屏幕|3||：$.apps[732].groups[0].rules[1] ↔ $.apps[732].groups[2].rules[1]
-- [跨规则组] 功能类-自动允许QQ音乐共享整个屏幕|3||：$.apps[732].groups[0].rules[2] ↔ $.apps[732].groups[2].rules[2]
-- [跨规则组] 功能类-自动允许无线调试(真我📱)|5||：$.apps[732].groups[3].rules[1] ↔ $.apps[732].groups[4].rules[1]
-- [跨规则组] 功能类-自动倍速⏩x1.5⚠️五选一|12||：$.apps[753].groups[11].rules[0] ↔ $.apps[753].groups[12].rules[0]
-- [跨规则组] 功能类-自动倍速⏩x2.0⚠️五选一|13||：$.apps[753].groups[11].rules[0] ↔ $.apps[753].groups[13].rules[0]
-- [跨规则组] 功能类-自动倍速⏩x3.0⚠️五选一|14||：$.apps[753].groups[11].rules[0] ↔ $.apps[753].groups[14].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[1001].groups[0].rules[0]
-- [跨规则组] 分段广告-用户资料页信息流广告|3||：$.apps[1004].groups[1].rules[0] ↔ $.apps[1004].groups[2].rules[0]
-- [跨规则组] 分段广告-用户资料页信息流广告|3||：$.apps[1004].groups[1].rules[1] ↔ $.apps[1004].groups[2].rules[1]
-- [跨规则组] 功能类-自动允许打开外部App|1||：$.apps[1005].groups[0].rules[0] ↔ $.apps[1006].groups[0].rules[0]
+### 上游新增的规则组
 
-## 选择器条件签名相同候选
+1. UU远程（com.netease.uuremote），group key 2「通知提示-更新提示」：1 条规则，限定 ComposeMainActivity，匹配“不更新/更新”提示。
+2. VIVO服务（com.vivo.daemonService），group key 1「功能类-自动关闭温度过低提示」：1 条规则，匹配温度过低提示中的“确定”按钮。
 
-仅比较 matches/anyMatches/allMatches/noneMatches/excludeMatches/activityIds/matchTime/preKeys/key 等字段的完全相同情况；不代表选择器语义等价或动作冗余。
+### 规则组元数据变化
 
-- [跨规则组] 开屏广告|0||：$.apps[81].groups[0].rules[1] ↔ $.apps[82].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[112].groups[0].rules[0]
-- [跨规则组] 权限提示-通讯录权限|3||：$.apps[119].groups[2].rules[0] ↔ $.apps[120].groups[2].rules[0]
-- [跨规则组] 功能类-更多-保存到相册|4||：$.apps[119].groups[3].rules[0] ↔ $.apps[120].groups[3].rules[0]
-- [跨规则组] 功能类-只保存单个媒体|5||：$.apps[119].groups[4].rules[0] ↔ $.apps[120].groups[4].rules[0]
-- [跨规则组] 功能类-退出自动关闭小窗|3||：$.apps[142].groups[11].rules[0] ↔ $.apps[145].groups[2].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[147].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[181].groups[0].rules[0] ↔ $.apps[183].groups[0].rules[0]
-- [跨规则组] 开屏广告|-1||：$.apps[13].groups[0].rules[0] ↔ $.apps[204].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.globalGroups[0].rules[1] ↔ $.apps[207].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[215].groups[0].rules[0]
-- [跨规则组] 功能类-视频自动x1.5倍速(⚠️三选一)|24||：$.apps[223].groups[22].rules[0] ↔ $.apps[223].groups[23].rules[0]
-- [跨规则组] 功能类-视频自动x1.5倍速(⚠️三选一)|24||：$.apps[223].groups[22].rules[1] ↔ $.apps[223].groups[23].rules[1]
-- [跨规则组] 功能类-视频自动x1.5倍速(⚠️三选一)|24||：$.apps[223].groups[22].rules[2] ↔ $.apps[223].groups[23].rules[2]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[22].rules[0] ↔ $.apps[223].groups[24].rules[0]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[22].rules[1] ↔ $.apps[223].groups[24].rules[1]
-- [跨规则组] 功能类-视频自动x2.0倍速(⚠️三选一)|25||：$.apps[223].groups[22].rules[2] ↔ $.apps[223].groups[24].rules[2]
-- [跨规则组] 开屏广告|1||：$.apps[201].groups[0].rules[0] ↔ $.apps[227].groups[0].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|2||：$.apps[8].groups[1].rules[0] ↔ $.apps[235].groups[1].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[254].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[262].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[112].groups[0].rules[1] ↔ $.apps[265].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[271].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[254].groups[0].rules[2] ↔ $.apps[271].groups[0].rules[1]
-- [跨规则组] 功能类-📋病例视频自动x0.8倍速(⚠️四选一)|10||：$.apps[278].groups[8].rules[0] ↔ $.apps[278].groups[9].rules[0]
-- [跨规则组] 功能类-📋病例视频自动x1.5倍速(⚠️四选一)|11||：$.apps[278].groups[8].rules[0] ↔ $.apps[278].groups[10].rules[0]
-- [跨规则组] 功能类-📋病例视频自动x2.0倍速(⚠️四选一)|12||：$.apps[278].groups[8].rules[0] ↔ $.apps[278].groups[11].rules[0]
-- [跨规则组] 功能类-📖课程视频自动x1.5倍速(❗三选一)|14||：$.apps[278].groups[12].rules[0] ↔ $.apps[278].groups[13].rules[0]
-- [跨规则组] 功能类-📖课程视频自动x2.0倍速(❗三选一)|15||：$.apps[278].groups[12].rules[0] ↔ $.apps[278].groups[14].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[284].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[204].groups[0].rules[1] ↔ $.apps[287].groups[0].rules[1]
-- [跨规则组] 开屏广告|-1||：$.apps[201].groups[0].rules[0] ↔ $.apps[293].groups[0].rules[0]
-- [跨规则组] 功能类-自动开启[自动连播]|19||：$.apps[293].groups[30].rules[0] ↔ $.apps[294].groups[12].rules[0]
-- [跨规则组] 功能类-自动开启[自动连播]|19||：$.apps[293].groups[30].rules[1] ↔ $.apps[294].groups[12].rules[1]
-- [跨规则组] 功能类-自动开启[自动连播]|19||：$.apps[293].groups[30].rules[2] ↔ $.apps[294].groups[12].rules[2]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[8].groups[1].rules[0] ↔ $.apps[304].groups[0].rules[0]
-- [跨规则组] 全屏广告|1||：$.apps[83].groups[0].rules[0] ↔ $.apps[313].groups[0].rules[0]
-- [跨规则组] 全屏广告|1||：$.apps[284].groups[3].rules[1] ↔ $.apps[314].groups[0].rules[1]
-- [跨规则组] 全屏广告-首页弹窗广告|6||：$.apps[172].groups[0].rules[1] ↔ $.apps[320].groups[1].rules[1]
-- [跨规则组] 全屏广告-首页弹窗广告|1||：$.apps[8].groups[1].rules[0] ↔ $.apps[321].groups[0].rules[0]
-- [跨规则组] 全屏广告-首页弹窗广告|1||：$.apps[284].groups[4].rules[1] ↔ $.apps[321].groups[0].rules[2]
-- [跨规则组] 开屏广告|-1||：$.apps[201].groups[0].rules[0] ↔ $.apps[331].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[334].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[242].groups[0].rules[0] ↔ $.apps[335].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[336].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[201].groups[0].rules[0] ↔ $.apps[377].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[201].groups[0].rules[0] ↔ $.apps[382].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[201].groups[0].rules[0] ↔ $.apps[384].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[379].groups[0].rules[0] ↔ $.apps[385].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[389].groups[0].rules[0]
-- [跨规则组] 分段广告-导出界面底部广告|0||：$.apps[262].groups[7].rules[1] ↔ $.apps[398].groups[0].rules[1]
-- [跨规则组] 更新提示|2||：$.apps[351].groups[1].rules[1] ↔ $.apps[400].groups[1].rules[1]
-- [跨规则组] 开屏广告|-1||：$.apps[201].groups[0].rules[0] ↔ $.apps[401].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[201].groups[0].rules[0] ↔ $.apps[403].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[414].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[112].groups[0].rules[1] ↔ $.apps[414].groups[0].rules[1]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[172].groups[0].rules[1] ↔ $.apps[432].groups[0].rules[1]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[82].groups[2].rules[1] ↔ $.apps[435].groups[0].rules[2]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[435].groups[0].rules[3] ↔ $.apps[437].groups[0].rules[3]
-- [跨规则组] 开屏广告|0||：$.apps[13].groups[0].rules[0] ↔ $.apps[442].groups[0].rules[0]
-- [跨规则组] 通知提示-通知弹窗|5||：$.apps[190].groups[4].rules[1] ↔ $.apps[455].groups[0].rules[1]
-- [跨规则组] 全屏广告-弹窗广告|2||：$.apps[8].groups[1].rules[0] ↔ $.apps[459].groups[0].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[284].groups[4].rules[1] ↔ $.apps[460].groups[0].rules[2]
-- [跨规则组] 开屏广告|0||：$.apps[254].groups[0].rules[2] ↔ $.apps[461].groups[0].rules[2]
-- [跨规则组] 局部广告-直播悬浮窗|4||：$.apps[492].groups[10].rules[0] ↔ $.apps[493].groups[2].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[83].groups[0].rules[0] ↔ $.apps[509].groups[0].rules[0]
-- [跨规则组] 全屏广告-文章内容页面弹窗广告|3||：$.apps[209].groups[0].rules[0] ↔ $.apps[511].groups[2].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[8].groups[1].rules[0] ↔ $.apps[517].groups[0].rules[0]
-- [跨规则组] 开屏广告|-1||：$.apps[416].groups[0].rules[0] ↔ $.apps[523].groups[0].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[83].groups[0].rules[0] ↔ $.apps[524].groups[1].rules[0]
-- [跨规则组] 分段广告-信息流广告|11||：$.apps[262].groups[7].rules[1] ↔ $.apps[525].groups[7].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[201].groups[0].rules[0] ↔ $.apps[526].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[416].groups[0].rules[0] ↔ $.apps[536].groups[0].rules[0]
-- [跨规则组] 功能类-全自动看广告领VIP|8||：$.apps[310].groups[9].rules[3] ↔ $.apps[536].groups[3].rules[14]
-- [同一规则组] 功能类-全自动看广告领VIP_单日|13||：$.apps[536].groups[8].rules[8] ↔ $.apps[536].groups[8].rules[9]
-- [跨规则组] 开屏广告|0||：$.apps[153].groups[0].rules[0] ↔ $.apps[540].groups[0].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|2||：$.apps[160].groups[0].rules[5] ↔ $.apps[543].groups[1].rules[5]
-- [跨规则组] 全屏广告-弹窗广告|0||：$.apps[407].groups[0].rules[1] ↔ $.apps[548].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[81].groups[0].rules[0] ↔ $.apps[567].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[201].groups[0].rules[0] ↔ $.apps[585].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[201].groups[0].rules[0] ↔ $.apps[599].groups[0].rules[0]
-- [跨规则组] 分段广告-卡片广告|1||：$.apps[13].groups[1].rules[1] ↔ $.apps[600].groups[0].rules[1]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[605].groups[0].rules[0]
-- [跨规则组] 开屏广告|0||：$.apps[615].groups[0].rules[0] ↔ $.apps[617].groups[0].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[13].groups[0].rules[0] ↔ $.apps[625].groups[0].rules[0]
-- [跨规则组] 通知提示-公告弹窗|2||：$.apps[81].groups[1].rules[0] ↔ $.apps[644].groups[0].rules[0]
-- [跨规则组] 分段广告-浮窗广告|2||：$.apps[209].groups[0].rules[0] ↔ $.apps[659].groups[1].rules[0]
-- [跨规则组] 开屏广告|1||：$.apps[77].groups[0].rules[0] ↔ $.apps[675].groups[0].rules[0]
-- [跨规则组] 分段广告-首页卡片广告|1||：$.apps[573].groups[1].rules[1] ↔ $.apps[685].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.globalGroups[0].rules[1] ↔ $.apps[696].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.globalGroups[0].rules[1] ↔ $.apps[697].groups[0].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[416].groups[0].rules[2] ↔ $.apps[697].groups[0].rules[2]
-- [跨规则组] 分段广告-信息流广告|0||：$.apps[703].groups[0].rules[0] ↔ $.apps[704].groups[1].rules[0]
-- [跨规则组] 全屏广告-弹窗广告|1||：$.apps[179].groups[1].rules[0] ↔ $.apps[726].groups[0].rules[0]
-- [跨规则组] 功能类-自动允许白描共享整个屏幕|2||：$.apps[732].groups[0].rules[1] ↔ $.apps[732].groups[1].rules[1]
-- [跨规则组] 功能类-自动允许白描共享整个屏幕|2||：$.apps[732].groups[0].rules[2] ↔ $.apps[732].groups[1].rules[2]
-- [跨规则组] 功能类-自动允许QQ音乐共享整个屏幕|3||：$.apps[732].groups[0].rules[1] ↔ $.apps[732].groups[2].rules[1]
-- [跨规则组] 功能类-自动允许QQ音乐共享整个屏幕|3||：$.apps[732].groups[0].rules[2] ↔ $.apps[732].groups[2].rules[2]
-- [跨规则组] 功能类-自动允许无线调试(真我📱)|5||：$.apps[732].groups[3].rules[1] ↔ $.apps[732].groups[4].rules[1]
-- [跨规则组] 开屏广告|0||：$.apps[112].groups[0].rules[1] ↔ $.apps[734].groups[0].rules[1]
-…另有 56 项未展开
+- 快手极速版（com.kuaishou.nebula），group key 3：名称由「全屏广告-红包弹窗」变为「全屏广告」；Activity 限制移动到组级，覆盖 HomeActivity 和 SearchActivity。
 
-## 安全结论与限制
+### 规则内容变化
 
-- 本工具只生成候选和结构差异，不会自动删除或改写任何 GKD 规则。
-- 相同选择器条件可能配置不同动作、冷却、上限、重置方式或优先级，不能据此合并。
-- 选择器表达式之间的包含、交集、可达性及真实 UI 树效果无法仅靠静态字符串可靠证明。
-- Activity、应用包名、规则组启用状态、前置按键、执行顺序、matchTime、actionCd、actionMaximum、resetMatch、snapshotUrls 等上下文都可能改变实际行为。
-- 不确定项一律保留；只有结合规则上下文和可复现测试证明行为不变后，才允许人工清理。
+- 番茄免费小说（com.dragon.read），group key 21「功能类-自动[展开更多]评论」：同一条无 key 规则的 Activity 范围由 4 项缩至 2 项，快照由 5 个缩至 3 个；actionCd 仍为 500。属于规则适配变化，不是可删除冗余。
+- 快手极速版（com.kuaishou.nebula），group key 3：key 0、key 1 的 Activity/选择器上下文发生调整；新增 key 2「口令已复制」相关规则。组级 Activity 范围也有变化。
 
-## 本次处理
+这些差异都保留在清理版与上游的版本对照中；没有自动把 v641 合并进 gkd.json5。
 
-未自动删除任何规则。
+## 完全重复规则对象候选
+
+| 范围 | 上游 | 清理版 |
+|---|---:|---:|
+| 同一规则组 | 0 | 0 |
+| 跨规则组 | 22 | 22 |
+
+人工复核观察：
+
+- 两个空规则对象出现在 Gemini、InstallerX/InstallerX Revived 的禁用占位组中；它们是不同应用的导航/占位配置，不能仅因对象为空而删除。
+- 哔哩哔哩、丁香园、小红书的倍速预设组共享部分步骤，但目标倍速、组 key、描述、快照或后续 preKeys 不同。
+- SystemUI 的网易云音乐、白描、QQ音乐屏幕共享授权流程共享部分点击步骤，但分别服务于不同应用场景。
+- X 的帖子/搜索页与用户资料页规则，以及 X 浏览器普通版和 Play 版规则，虽有相同对象，应用或 Activity 上下文不同。
+- 其他跨应用开屏规则即使完整规则对象相同，也仍受各自应用包名、规则组启用状态、matchTime、actionMaximum、resetMatch、priorityTime 和执行顺序约束。
+
+22 项均为候选，不存在已通过完整上下文和可复现设备测试证明可安全删除的项目。
+
+## 选择器条件字段完全相同候选
+
+签名字段：matches、anyMatches、allMatches、noneMatches、excludeMatches、activityIds、matchTime、preKeys、key。
+
+| 候选范围 | 数量 |
+|---|---:|
+| 总数 | 156 |
+| 同一应用包名内 | 24 |
+| 不同应用包名之间 | 132 |
+| 同一规则组内 | 1 |
+| 跨规则组 | 155 |
+
+候选对中的规则级上下文差异字段出现次数（不同字段统计可能重叠）：
+
+- snapshotUrls：142；exampleUrls：78；excludeSnapshotUrls：24。
+- fastQuery：40；action：20；excludeActivityIds：19；name：18。
+- actionMaximum：3；actionCd：2；actionDelay：2；position：2；order：1；matchDelay：1。
+
+候选对中的规则组级上下文差异字段出现次数：
+
+- key：99；name：57；desc：43；fastQuery：42。
+- activityIds：29；priorityTime：26；actionMaximum：21；resetMatch：16；matchTime：15。
+- actionMaximumKey：13；matchRoot：3；forcedTime：3；actionDelay：2；actionCdKey：1；disableIfAppGroupMatch：1；apps：1。
+
+这说明选择器条件相同的候选经常具有不同的动作、快照、Activity、动作上限、冷却、重置、优先级和组配置。相同选择器不构成合并或删除证明。
+
+## 审计工具与工作流维护
+
+本轮修正了审计工具的规则组匹配口径，改为按稳定身份比较，避免应用列表新增导致路径错位误报。
+
+工作流现已先下载候选上游到临时文件，JSON5、订阅 ID、版本和回退检查通过后才写入 upstream.json5。若校验失败，只提交阻塞报告，不提交候选上游文件；gkd.json5 始终不参与自动写入。
+
+审计脚本和工作流的修改已提交，但新版本工作流尚未经过下一次 Actions 实际运行验证。最近一次绿色运行发生在本轮脚本/工作流修正之前，不能视为新版本已验证。
+
+## 最终安全结论
+
+- 未删除任何规则。
+- 未合并任何规则。
+- 未修改 gkd.json5。
+- upstream.json5 保持已发布 v641。
+- 22 个完全重复对象候选与 156 个选择器条件相同候选全部保留。
+- 只有完整上下文审查和可复现测试同时证明行为不变，才允许后续人工清理。
