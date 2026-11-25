@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import JSON5 from 'json5';
 
-const EXPECTED_ID = Number(process.env.GKD_EXPECTED_ID ?? 667);
+const EXPECTED_UPSTREAM_ID = Number(process.env.GKD_EXPECTED_UPSTREAM_ID ?? 667);
+const EXPECTED_CLEANED_ID = Number(process.env.GKD_EXPECTED_CLEANED_ID ?? 668);
 const candidatePath = process.argv[2] ?? 'upstream.json5';
 const upstreamPath = 'upstream.json5';
 const cleanedPath = 'gkd.json5';
@@ -389,9 +390,9 @@ function main() {
   }
 
   const validationErrors = [];
-  for (const [label, data] of [['上游', upstream], ['清理版', cleaned]]) {
-    if (data.id !== EXPECTED_ID) {
-      validationErrors.push(label + '订阅 ID 应为 ' + EXPECTED_ID + '，实际为 ' + String(data.id));
+  for (const [label, data, expectedId] of [['上游', upstream, EXPECTED_UPSTREAM_ID], ['清理版', cleaned, EXPECTED_CLEANED_ID]]) {
+    if (data.id !== expectedId) {
+      validationErrors.push(label + '订阅 ID 应为 ' + expectedId + '，实际为 ' + String(data.id));
     }
     if (!Number.isInteger(data.version) || data.version <= 0) {
       validationErrors.push(label + '版本号无效：' + String(data.version));
@@ -492,8 +493,8 @@ function main() {
     '## 校验结果',
     '',
     '- JSON5 解析：通过',
-    '- 上游订阅 ID：' + (upstream.id === EXPECTED_ID ? '通过' : '失败'),
-    '- 清理版订阅 ID：' + (cleaned.id === EXPECTED_ID ? '通过' : '失败'),
+    '- 上游订阅 ID：' + (upstream.id === EXPECTED_UPSTREAM_ID ? '通过' : '失败'),
+    '- 清理版订阅 ID：' + (cleaned.id === EXPECTED_CLEANED_ID ? '通过' : '失败'),
     '- 上游版本号：' + (Number.isInteger(upstream.version) && upstream.version > 0 ? '通过' : '失败'),
     '- 清理版版本号：' + (Number.isInteger(cleaned.version) && cleaned.version > 0 ? '通过' : '失败'),
     '',

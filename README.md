@@ -30,6 +30,12 @@
 - 只有结合规则上下文和可复现测试证明行为不变后，才进行人工清理。
 - 上游更新只更新 `upstream.json5` 和审计报告，不覆盖 `gkd.json5`。
 
+## 个人修正版订阅
+
+- GKD 订阅地址：<https://raw.githubusercontent.com/iluvboi/GKD_subscription/main/gkd.json5>
+- 版本检测文件：<https://raw.githubusercontent.com/iluvboi/GKD_subscription/main/gkd.version.json5>
+- 当前订阅 ID：668（与上游 ID 667 独立）
+
 ## 上游
 
 - 项目：<https://github.com/Lin-arm/GKD_subscription>
