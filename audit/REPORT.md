@@ -1,10 +1,10 @@
 # GKD 规则审计报告
 
-- 检查时间：2026-11-26T06:59:34.476Z
-- 上游订阅 ID/版本：667 / v645
+- 检查时间：2026-11-27T06:55:40.170Z
+- 上游订阅 ID/版本：667 / v646
 - 清理版订阅 ID/版本：667 / v640
 - 上游候选文件：/tmp/upstream-candidate.json5
-- 注意：清理版版本落后上游 5 个版本；按要求不自动覆盖。
+- 注意：清理版版本落后上游 6 个版本；按要求不自动覆盖。
 - 比较结果：上游与清理版存在差异
 - 更新策略：校验通过后才写入 upstream.json5；绝不自动覆盖 gkd.json5。
 
@@ -21,8 +21,8 @@
 | 指标 | 上游 | 清理版 |
 |---|---:|---:|
 | 应用数 | 1013 | 1008 |
-| 规则组 | 2515 | 2501 |
-| 规则总数 | 3982 | 3962 |
+| 规则组 | 2520 | 2501 |
+| 规则总数 | 3995 | 3962 |
 | 同组完全重复对象候选 | 0 | 0 |
 | 跨组完全重复对象候选 | 22 | 22 |
 | 同组选择器条件相同候选 | 1 | 1 |
@@ -32,10 +32,10 @@
 
 规则组优先按应用包名 + group.key 匹配；没有 key 时退回应用包名 + group.name。数组索引仅用于定位，不作为身份。这样可避免新增应用或规则组导致后续索引整体偏移而产生误报。
 
-- 上游有、清理版缺失的规则组：14
+- 上游有、清理版缺失的规则组：19
 - 清理版额外规则组：0
-- 规则组元数据变化：8
-- 存在规则内容变化的匹配组：7
+- 规则组元数据变化：12
+- 存在规则内容变化的匹配组：13
 - 身份冲突、无法安全配对的组：0
 
 - 上游新增规则组：JavDB (xxx.pornhub.fuck) / 更新提示（app:xxx.pornhub.fuck|key:2，1 条规则）
@@ -49,9 +49,15 @@
 - 上游新增规则组：快对AI (com.kuaiduizuoye.scan) / 局部广告-讲解视频浮窗（app:com.kuaiduizuoye.scan|key:2，1 条规则）
 - 上游新增规则组：微博 (com.sina.weibo) / 全屏广告-小组件弹窗（app:com.sina.weibo|key:28，1 条规则）
 - 上游新增规则组：微博 (com.sina.weibo) / 全屏广告-发现页弹窗（app:com.sina.weibo|key:29，1 条规则）
+- 上游新增规则组：微博 (com.sina.weibo) / 其他-关闭关注提示（app:com.sina.weibo|key:30，2 条规则）
 - 上游新增规则组：小米服务框架 (com.xiaomi.xmsf) / 权限提示-b站申请通知权限（app:com.xiaomi.xmsf|key:1，1 条规则）
+- 上游新增规则组：雪球 (com.xueqiu.android) / 局部广告（app:com.xueqiu.android|key:4，5 条规则）
+- 上游新增规则组：雪球 (com.xueqiu.android) / 全屏广告-开通股票账户（app:com.xueqiu.android|key:5，1 条规则）
+- 上游新增规则组：雪球 (com.xueqiu.android) / 功能类-自动点击[查看原图]（app:com.xueqiu.android|key:6，1 条规则）
+- 上游新增规则组：雪球 (com.xueqiu.android) / 其他-关闭关注Tip（app:com.xueqiu.android|key:7，1 条规则）
 - 上游新增规则组：UU远程 (com.netease.uuremote) / 更新提示（app:com.netease.uuremote|key:2，1 条规则）
 - 上游新增规则组：VIVO服务 (com.vivo.daemonService) / 功能类-自动关闭温度过低提示（app:com.vivo.daemonService|key:1，1 条规则）
+- 规则组配置变化：GitHub (com.github.android) / 功能类-自动批准授权验证；字段：fastQuery
 - 规则组配置变化：(小米)应用包管理组件 (com.miui.packageinstaller) / 功能类-安装来源不可信；字段：enable
 - 规则组配置变化：(小米)应用包管理组件 (com.miui.packageinstaller) / 功能类-无视风险继续安装；字段：enable
 - 规则组配置变化：(小米)应用包管理组件 (com.miui.packageinstaller) / 功能类-自动勾选[已了解此应用存在风险]；字段：enable
@@ -60,6 +66,10 @@
 - 规则组配置变化：红果免费短剧 (com.phoenix.read) / 权限提示-通知权限；字段：actionMaximumKey, desc
 - 规则组配置变化：快手极速版 (com.kuaishou.nebula) / 全屏广告；字段：activityIds, name
 - 规则组配置变化：系统升级(VIVO) (com.bbk.updater) / 更新提示；字段：desc, name
+- 规则组配置变化：闲鱼 (com.taobao.idlefish) / 功能类-自动点击[查看原图]；字段：activityIds
+- 规则组配置变化：小红书 (com.xingin.xhs) / 权限提示-通知权限；字段：activityIds
+- 规则组配置变化：雪球 (com.xueqiu.android) / 全屏广告；字段：actionMaximum, fastQuery, matchTime, resetMatch
+- 规则变化：GitHub (com.github.android) / 功能类-自动批准授权验证；key=0 字段变化[matchRoot, matches, name]；无 key 规则可能修改，字段变化[matches, name]
 - 规则变化：JavDB (xxx.pornhub.fuck) / 通知提示-公告弹窗；无 key 规则可能修改，字段变化[activityIds, exampleUrls, matches, snapshotUrls]
 - 规则变化：豆瓣 (com.douban.frodo) / 开屏广告；key=4 字段变化[actionCdKey]；key=10 字段变化[actionCdKey, anyMatches, matches]；key=11 字段变化[anyMatches, matches]；key=12 字段变化[anyMatches, matches, snapshotUrls]；key=13 字段变化[anyMatches, matches]
 - 规则变化：番茄免费小说 (com.dragon.read) / 功能类-自动[展开更多]评论；无 key 规则可能修改，字段变化[activityIds, snapshotUrls]
@@ -67,6 +77,11 @@
 - 规则变化：快手极速版 (com.kuaishou.nebula) / 全屏广告；key=0 字段变化[activityIds, matches]；key=1 字段变化[activityIds]；上游独有：key=2
 - 规则变化：淘宝 (com.taobao.taobao) / 全屏广告-弹窗广告；上游独有：key=6
 - 规则变化：腾讯文档 (com.tencent.docs) / 开屏广告；key=0 字段变化[matches, snapshotUrls]
+- 规则变化：闲鱼 (com.taobao.idlefish) / 功能类-自动点击[查看原图]；上游独有：key=0 / name=直接; key=1 / name=反射法；清理版独有：(无 key/name)
+- 规则变化：小红书 (com.xingin.xhs) / 权限提示-通知权限；key=0 字段变化[activityIds, exampleUrls, name, snapshotUrls]；key=1 字段变化[exampleUrls, name]；上游独有：key=2 / name=全屏弹窗2
+- 规则变化：雪球 (com.xueqiu.android) / 局部广告-信息流广告；无 key 规则可能修改，字段变化[activityIds, exampleUrls, snapshotUrls]
+- 规则变化：雪球 (com.xueqiu.android) / 局部广告-评论区广告；无 key 规则可能修改，字段变化[exampleUrls, matches, snapshotUrls]
+- 规则变化：雪球 (com.xueqiu.android) / 全屏广告；上游独有：key=0 / name=首页; key=1 / name=小雪理财课；清理版独有：(无 key/name)
 
 ## 完全重复规则对象候选
 
