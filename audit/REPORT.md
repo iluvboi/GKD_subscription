@@ -1,10 +1,10 @@
 # GKD 规则审计报告
 
-- 检查时间：2026-11-27T06:55:40.170Z
-- 上游订阅 ID/版本：667 / v646
+- 检查时间：2026-11-28T06:29:42.919Z
+- 上游订阅 ID/版本：667 / v647
 - 清理版订阅 ID/版本：667 / v640
 - 上游候选文件：/tmp/upstream-candidate.json5
-- 注意：清理版版本落后上游 6 个版本；按要求不自动覆盖。
+- 注意：清理版版本落后上游 7 个版本；按要求不自动覆盖。
 - 比较结果：上游与清理版存在差异
 - 更新策略：校验通过后才写入 upstream.json5；绝不自动覆盖 gkd.json5。
 
@@ -21,8 +21,8 @@
 | 指标 | 上游 | 清理版 |
 |---|---:|---:|
 | 应用数 | 1013 | 1008 |
-| 规则组 | 2520 | 2501 |
-| 规则总数 | 3995 | 3962 |
+| 规则组 | 2522 | 2501 |
+| 规则总数 | 3999 | 3962 |
 | 同组完全重复对象候选 | 0 | 0 |
 | 跨组完全重复对象候选 | 22 | 22 |
 | 同组选择器条件相同候选 | 1 | 1 |
@@ -32,9 +32,9 @@
 
 规则组优先按应用包名 + group.key 匹配；没有 key 时退回应用包名 + group.name。数组索引仅用于定位，不作为身份。这样可避免新增应用或规则组导致后续索引整体偏移而产生误报。
 
-- 上游有、清理版缺失的规则组：19
+- 上游有、清理版缺失的规则组：21
 - 清理版额外规则组：0
-- 规则组元数据变化：12
+- 规则组元数据变化：13
 - 存在规则内容变化的匹配组：13
 - 身份冲突、无法安全配对的组：0
 
@@ -45,7 +45,9 @@
 - 上游新增规则组：测测 (com.xxwolo.cc5) / 全屏广告-小组件弹窗（app:com.xxwolo.cc5|key:1，1 条规则）
 - 上游新增规则组：测测 (com.xxwolo.cc5) / 局部广告-右下角浮窗（app:com.xxwolo.cc5|key:2，1 条规则）
 - 上游新增规则组：豆包 (com.larus.nova) / 全屏广告（app:com.larus.nova|key:2，1 条规则）
+- 上游新增规则组：番茄免费小说 (com.dragon.read) / 功能类-自动[展开]简介（app:com.dragon.read|key:22，2 条规则）
 - 上游新增规则组：番茄小说 (com.dragon.read.oversea.gp) / 权限提示-通知权限（app:com.dragon.read.oversea.gp|key:1，3 条规则）
+- 上游新增规则组：京东 (com.jingdong.app.mall) / 功能类-自动进入[快速验证]（app:com.jingdong.app.mall|key:18，1 条规则）
 - 上游新增规则组：快对AI (com.kuaiduizuoye.scan) / 局部广告-讲解视频浮窗（app:com.kuaiduizuoye.scan|key:2，1 条规则）
 - 上游新增规则组：微博 (com.sina.weibo) / 全屏广告-小组件弹窗（app:com.sina.weibo|key:28，1 条规则）
 - 上游新增规则组：微博 (com.sina.weibo) / 全屏广告-发现页弹窗（app:com.sina.weibo|key:29，1 条规则）
@@ -62,6 +64,7 @@
 - 规则组配置变化：(小米)应用包管理组件 (com.miui.packageinstaller) / 功能类-无视风险继续安装；字段：enable
 - 规则组配置变化：(小米)应用包管理组件 (com.miui.packageinstaller) / 功能类-自动勾选[已了解此应用存在风险]；字段：enable
 - 规则组配置变化：大麦 (cn.damai) / 开屏广告；字段：desc
+- 规则组配置变化：番茄免费小说 (com.dragon.read) / 功能类-自动[展开更多]评论；字段：actionCd, desc, fastQuery
 - 规则组配置变化：红果免费短剧 (com.phoenix.read) / 功能类-[上滑]继续看短剧；字段：desc
 - 规则组配置变化：红果免费短剧 (com.phoenix.read) / 权限提示-通知权限；字段：actionMaximumKey, desc
 - 规则组配置变化：快手极速版 (com.kuaishou.nebula) / 全屏广告；字段：activityIds, name
@@ -72,7 +75,7 @@
 - 规则变化：GitHub (com.github.android) / 功能类-自动批准授权验证；key=0 字段变化[matchRoot, matches, name]；无 key 规则可能修改，字段变化[matches, name]
 - 规则变化：JavDB (xxx.pornhub.fuck) / 通知提示-公告弹窗；无 key 规则可能修改，字段变化[activityIds, exampleUrls, matches, snapshotUrls]
 - 规则变化：豆瓣 (com.douban.frodo) / 开屏广告；key=4 字段变化[actionCdKey]；key=10 字段变化[actionCdKey, anyMatches, matches]；key=11 字段变化[anyMatches, matches]；key=12 字段变化[anyMatches, matches, snapshotUrls]；key=13 字段变化[anyMatches, matches]
-- 规则变化：番茄免费小说 (com.dragon.read) / 功能类-自动[展开更多]评论；无 key 规则可能修改，字段变化[activityIds, snapshotUrls]
+- 规则变化：番茄免费小说 (com.dragon.read) / 功能类-自动[展开更多]评论；上游独有：key=1 / name=①[展开]点评; key=2 / name=②[展开]评论/回复；清理版独有：(无 key/name)
 - 规则变化：红果免费短剧 (com.phoenix.read) / 权限提示-通知权限；上游独有：key=0; key=1；清理版独有：(无 key/name)
 - 规则变化：快手极速版 (com.kuaishou.nebula) / 全屏广告；key=0 字段变化[activityIds, matches]；key=1 字段变化[activityIds]；上游独有：key=2
 - 规则变化：淘宝 (com.taobao.taobao) / 全屏广告-弹窗广告；上游独有：key=6
